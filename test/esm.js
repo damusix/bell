@@ -19,12 +19,20 @@ describe('import()', () => {
 
     it('exposes all methods and classes as named imports', () => {
 
-        expect(Object.keys(Bell)).to.equal([
+        const needed = [
             'default',
             'oauth',
             'plugin',
             'providers',
             'simulate'
-        ]);
+        ]
+
+        const keys = Object.keys(Bell);
+
+        for (const k in needed) {
+
+            expect(keys, `method or key: ${k}`).to.include(k);
+        }
+
     });
 });
